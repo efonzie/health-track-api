@@ -1,86 +1,79 @@
 # Health-Track API
 
-This proejct was created from a Serverless starter that adds ES7 syntax, serverless-offline, environment variables, and unit test support. Part of the [Serverless Stack](http://serverless-stack.com) guide.
-
-[Serverless Node.js Starter](https://github.com/AnomalyInnovations/serverless-nodejs-starter) uses the [serverless-webpack](https://github.com/serverless-heaven/serverless-webpack) plugin, [Babel](https://babeljs.io), [serverless-offline](https://github.com/dherault/serverless-offline), and [Jest](https://facebook.github.io/jest/). It supports:
-
-- **ES7 syntax in your handler functions**
-  - Use `import` and `export`
-- **Package your functions using Webpack**
-- **Run API Gateway locally**
-  - Use `serverless offline start`
-- **Support for unit tests**
-  - Run `npm test` to run your tests
-- **Sourcemaps for proper error messages**
-  - Error message show the correct line numbers
-  - Works in production with CloudWatch
-- **Automatic support for multiple handler files**
-  - No need to add a new entry to your `webpack.config.js`
-- **Add environment variables for your stages**
-
-
 ## API Endpoints
-Execute the following command to run functions locally to see exact return format:
-``` bash
-$ serverless invoke local --function funcName --path path/to/mock_file
-```
-###Notes
----
-####createNote
+
+### Notes
+- **userId (String)** - User ID
+- **noteId (String)** - Note ID
+- **habit (String)** - Habit the note has been recorded for
+- **eventDatetime (Datetime)** - Datetime event being noted took place
+- **note (String)** - Optional description of noted habit
+- **attachment (String)** - Optional filename of attachment
+- **createdAt (Datetime)** - Datetime record created
+
+#### createNote
 - Creates new note for currently authenticated user
 - Path: **/notes**
 - Method: **POST**
 
-####getNote
+#### getNote
 - Returns note with specified ID for currently authenticated user
 - Path: **/notes/{id}**
 - Method: **GET**
 
-####listNotes
+#### listNotes
 - Fetches all notes records for currently authenticated user
 - Path: **/notes**
 - Method: **GET**
 
-####updateNote
+#### updateNote
 - Updates the note with the provided ID
 - Path: **/notes/{id}**
 - Method: **PUT**
 
-####removeNote
+#### removeNote
 - Deletes the note with the provided ID
 - Path: **/notes/{id}**
 - Method: **DELETE**
 
-###Configs
----
-####listConfigs
+### Configs
+- **userId (String)** - User ID
+- **habits (String[])** - Array of strings (habits) configured for the user
+
+#### listConfigs
 - Fetches configurations  for currently authenticated user
 - Path: **/configs**
 - Method: **GET**
 
-####updateConfigs
+#### updateConfigs
 - Updates configurations for currently authenticated user
 - Path: **/configs**
 - Method: **PUT**
 
-###Goals
----
-####createGoal
+### Goals
+- **userId (String)** - User ID
+- **goalId (String)** - Goal ID
+- **habit (String)** - Habit the goal is tracking
+- **target (Integer)** - Target number of recorded habits to reach goal
+- **measure (String)** - Unit of measure for goal (Day, Week, Month)
+- **createdAt (Datetime)** - Datetime record created
+
+#### createGoal
 - Creates a new goal for currently authenticated user
 - Path: **/goals**
 - Method: **POST**
 
-####removeGoal
+#### removeGoal
 - Deletes goal with the provided ID
 - Path: **/goals/{id}**
 - Method: **DELETE**
 
-####getGoalProgress
-- Fetches list of goals for currently authenticated user with current progress field
+#### getGoalProgress
+- Fetches list of goals for currently authenticated user with 'current' field indicating the progress towards the goal target
 - Path: **/goals/progress**
 - Method: **GET**
 
-####getGoalSummary
+#### getGoalSummary
 - Returns aggregate goals for each measure (Day, Week, Month) with current progress
 - Path: **/goals/summary**
 - Method: **GET**
