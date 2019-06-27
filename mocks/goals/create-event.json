@@ -1,0 +1,8 @@
+{
+    "body": "{\"habit\":\"Yoga\",\"target\":3,\"measure\":\"Week\"}",
+    "requestContext": {
+        "identity": {
+            "cognitoIdentityId": "USER-SUB-1234"
+        }
+    }
+}

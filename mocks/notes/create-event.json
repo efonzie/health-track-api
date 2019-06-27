@@ -1,0 +1,8 @@
+{
+	"body": "{\"habit\":\"Yoga\",\"eventDatetime\":\"2019-06-23 17:38\",\"note\":\"\",\"attachment\":\"hello.jpg\"}",
+	"requestContext": {
+		"identity": {
+			"cognitoIdentityId": "USER-SUB-1234"
+		}
+	}
+}
